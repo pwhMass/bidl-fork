@@ -158,8 +158,8 @@ docker network create -d overlay --attachable HLF
 2. Configure system UDP buffer to 250 Mbytes (avoiding packet losses at the system network buffer) by
 
 ```shell
-sysctl -w net.core.rmem_max=262144000
-sysctl -w net.core.rmem_default=262144000
+sudo sysctl -w net.core.rmem_max=262144000
+sudo sysctl -w net.core.rmem_default=262144000
 ```
 
 3. Setup the loopback interface for multicast with

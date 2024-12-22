@@ -17,17 +17,18 @@ rm -f $base_dir/normal_node.tar
 
 echo "Building consensus node image..."
 cd $smart_dir
-docker image build --no-cache -t smart:latest .
+docker image build -t smart:latest --network=host .
 docker save -o $base_dir/smart.tar smart:latest
 
 echo "Building sequencer image..."
 cd $sequencer_dir
-docker image build --no-cache -t sequencer:latest .
+env
+docker image build  -t sequencer:latest --network=host .
 docker save -o $base_dir/sequencer.tar sequencer:latest
 
 echo "Building normal node image..."
 cd $normal_node_dir
-docker image build --no-cache -t normal_node:latest .
+docker image build -t normal_node:latest --network=host .
 docker save -o $base_dir/normal_node.tar normal_node:latest
 
 cd $base_dir

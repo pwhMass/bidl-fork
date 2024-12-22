@@ -1,5 +1,5 @@
-FROM openjdk:8u181-jdk
-# FROM openjdk:11
+# FROM openjdk:8u181-jdk
+FROM openjdk:11
 COPY . /home
 WORKDIR /home
 
