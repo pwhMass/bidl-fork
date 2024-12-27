@@ -32,7 +32,7 @@ echo "Starting the sequencer..., tput cap:$2 kTxns/s."
 docker run --name sequencer --net=host sequencer:latest /sequencer/sequencer $2 > $base_dir/logs/sequencer.log 2>&1 &
 
 # echo "Starting normal node..."
-# docker run --name normal_node0 --net=host --cap-add NET_ADMIN normal_node:latest /normal_node/server --quiet --tps=$2 --id=0 > $base_dir/logs/normal_0.log 2>&1 &
+docker run --name normal_node0 --net=host --cap-add NET_ADMIN normal_node:latest /normal_node/server --quiet --tps=$2 --id=0 > $base_dir/logs/normal_0.log 2>&1 &
 
 echo "Waiting for consensus node to start..."
 while true; do 
@@ -48,7 +48,7 @@ echo "benchmarking..."
 
 cd $normal_node_dir
 if [ $3 == "test" ]; then
-    docker run --name bidl_client --net=host --cap-add NET_ADMIN normal_node /normal_node/client --num=100000 --org=50
+    docker run --name bidl_client --net=host --cap-add NET_ADMIN normal_node /normal_node/client --num=100000 --org=10
 elif [ $3 == "performance" ]; then
     docker run --name bidl_client --net=host --cap-add NET_ADMIN normal_node /normal_node/client --num=100000 --org=50
 elif [ $3 == "nd" ]; then 
