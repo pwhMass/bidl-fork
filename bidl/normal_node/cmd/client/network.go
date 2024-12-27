@@ -31,8 +31,8 @@ func (c *Client) setupConnection(addr string, tps int) {
 	/*
 		code for setting up udp connection using basic API, seems not necessary for simplicity.
 
-		//en4, err := net.InterfaceByName("enp5s0")
-		en4, err := net.InterfaceByName("enp5s0")
+		//en4, err := net.InterfaceByName("lo")
+		en4, err := net.InterfaceByName("lo")
 		util.ErrorCheck(err, "setupConnection", true)
 
 		// bind a local address
@@ -69,7 +69,7 @@ func (c *Client) setupConnection(addr string, tps int) {
 	log.Printf("> server address: %s ... connecting ", address.String())
 
 	// use the lo network interface card
-	nif, err := net.InterfaceByName("enp5s0")
+	nif, err := net.InterfaceByName("lo")
 	if err !=nil {
 		log.Fatal(err)
 	}
